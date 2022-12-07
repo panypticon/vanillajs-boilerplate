@@ -1,0 +1,187 @@
+@use '../abstracts/' as *;
+
+.modal {
+    &__background {
+        background-color: rgba($shade-07, 0.4);
+        bottom: 0;
+        left: 0;
+        position: fixed;
+        right: 0;
+        top: 0;
+        z-index: 20;
+
+        @include breakpoint-min('tab-port') {
+            padding: 0 map-get($sizes, 'lg');
+        }
+
+        @media (prefers-color-scheme: dark) {
+            background-color: rgba($shade-09, 0.4);
+        }
+    }
+
+    &__box {
+        background-color: var(--background-active);
+        border-radius: map-get($sizes, 'sm') map-get($sizes, 'sm') 0 0;
+        box-shadow: 0 0 map-get($sizes, 'lg') rgba($shade-08, 0.5);
+        display: flex;
+        flex-flow: column;
+        height: calc(100vh - map-get($sizes, 'lg'));
+        margin: map-get($sizes, 'lg') auto 0;
+        max-width: $max-width - map-get($sizes, 'lg') * 2;
+        overflow: hidden;
+
+        @include breakpoint-min('tab-port') {
+            max-width: $max-width - map-get($sizes, 'xl') * 2;
+        }
+    }
+
+    &__header {
+        align-items: center;
+        background-color: $color-primary;
+        color: $color-dark;
+        display: flex;
+        gap: map-get($sizes, 'lg');
+        justify-content: space-between;
+        padding: map-get($sizes, 'sm');
+
+        @include breakpoint-min('tab-port') {
+            padding: $ui-padding;
+        }
+
+        &-category {
+            background-color: var(--color-active);
+            color: $color-light;
+            border-radius: 3rem;
+            display: none;
+            line-height: 1;
+            padding: $ui-padding;
+
+            @include ui-font-style;
+
+            @include breakpoint-min('tab-land') {
+                display: block;
+            }
+        }
+
+        &-company,
+        &-heading {
+            @include ui-font-style;
+        }
+
+        &-summary {
+            display: none;
+
+            @include breakpoint-min('tab-port') {
+                display: block;
+            }
+        }
+
+        i.can-close {
+            cursor: pointer;
+            font-size: 2.4rem;
+            margin-left: auto;
+            padding: map-get($sizes, 'xs');
+            transform: translateX(map-get($sizes, 'xs'));
+        }
+    }
+
+    &__content {
+        flex: 1;
+        overflow: auto;
+
+        img {
+            width: 100%;
+            flex-shrink: 0;
+        }
+
+        figcaption {
+            background-color: var(--color-active);
+            color: $color-light;
+            padding: map-get($sizes, 'sm');
+
+            @include breakpoint-min('tab-port') {
+                padding: $ui-padding;
+            }
+        }
+    }
+
+    &__text {
+        padding: map-get($sizes, 'lg') map-get($sizes, 'sm');
+
+        @include breakpoint-min('tab-port') {
+            padding: map-get($sizes, 'lg');
+        }
+
+        h2 {
+            margin-bottom: map-get($sizes, 'sm');
+
+            @include breakpoint-min('tab-land') {
+                font-size: 3.6rem;
+                margin-bottom: map-get($sizes, 'sm');
+            }
+
+            &:not(:first-of-type) {
+                margin-top: map-get($sizes, 'lg');
+            }
+        }
+
+        h3 {
+            @include breakpoint-min('tab-land') {
+                font-size: 3.2rem;
+                margin-bottom: map-get($sizes, 'sm');
+            }
+        }
+
+        p,
+        ul {
+            line-height: 1.35;
+            margin-bottom: map-get($sizes, 'xs');
+        }
+
+        ul {
+            list-style-position: inside;
+        }
+    }
+
+    &__img-container {
+        display: flex;
+        overflow: hidden;
+
+        img {
+            transform: translateX(-100%);
+        }
+
+        &.right {
+            img {
+                animation: to-right 0.4s ease-out forwards;
+            }
+        }
+
+        &.left {
+            img {
+                animation: to-left 0.4s ease-out forwards;
+            }
+        }
+    }
+
+    &__figure {
+        figcaption {
+            align-items: center;
+            display: flex;
+            justify-content: space-between;
+
+            button {
+                background-color: transparent;
+                border: none;
+                color: inherit;
+                cursor: pointer;
+                font-size: 2.4rem;
+                padding: map-get($sizes, 'xs');
+
+                &:first-of-type {
+                    margin-left: auto;
+                }
+            }
+        }
+    }
+}

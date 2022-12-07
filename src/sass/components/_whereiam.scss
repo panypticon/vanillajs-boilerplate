@@ -1,0 +1,54 @@
+@use '../abstracts' as *;
+
+.whereiam {
+    overflow: hidden;
+    &__heading {
+        align-items: center;
+        display: flex;
+        flex-wrap: wrap;
+        gap: map-get($sizes, 'lg');
+        margin-bottom: map-get($sizes, 'lg');
+
+        @include breakpoint-min('tab-port') {
+            flex-wrap: nowrap;
+        }
+
+        @include breakpoint-min('tab-land') {
+            margin-bottom: map-get($sizes, 'xl');
+        }
+
+        h2 {
+            margin-bottom: 0;
+        }
+
+        .btn {
+            white-space: nowrap;
+            width: 100%;
+
+            @include breakpoint-min('tab-port') {
+                width: auto;
+            }
+        }
+    }
+
+    img {
+        height: 50vh;
+        max-height: 40rem;
+        object-fit: cover;
+        object-position: 35%;
+        transform: translateX(-#{map-get($sizes, 'sm')});
+        width: calc(100% + map-get($sizes, 'lg'));
+
+        @include breakpoint-min('tab-port') {
+            width: calc(100% + map-get($sizes, 'xl'));
+            transform: translateX(-#{map-get($sizes, 'lg')});
+        }
+
+        @include breakpoint-min('tab-land') {
+            width: 100%;
+            height: auto;
+            object-fit: contain;
+            transform: translateX(0);
+        }
+    }
+}

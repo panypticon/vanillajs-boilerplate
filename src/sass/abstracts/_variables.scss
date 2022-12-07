@@ -1,0 +1,55 @@
+//////////////////////////////////////////////////
+// Colors
+
+$color-light: rgb(247, 247, 247);
+$color-dark: rgb(20, 20, 20);
+
+$color-primary: rgb(254, 198, 1);
+$color-primary-light: rgb(254, 228, 133);
+$color-primary-dark: rgb(244, 179, 1);
+
+$color-secondary: rgb(82, 71, 194);
+$color-secondary-light: rgb(153, 148, 219);
+$color-secondary-dark: rgb(59, 51, 153);
+
+$color-tertiary: rgb(255, 32, 110);
+$color-tertiary-light: rgb(255, 173, 202);
+$color-tertiary-dark: rgb(184, 0, 64);
+
+$shade-01: rgb(235, 235, 235);
+$shade-02: rgb(222, 222, 222);
+$shade-03: rgb(196, 196, 196);
+$shade-04: rgb(171, 171, 171);
+$shade-05: rgb(148, 148, 148);
+$shade-06: rgb(122, 122, 122);
+$shade-07: rgb(97, 97, 97);
+$shade-08: rgb(71, 71, 71);
+$shade-09: rgb(46, 46, 46);
+
+//////////////////////////////////////////////////
+// Gradients
+
+$gradient-secondary: linear-gradient(120deg, $color-secondary-dark, $color-secondary);
+$gradient-tertiary: linear-gradient(120deg, $color-tertiary-dark, $color-tertiary);
+
+//////////////////////////////////////////////////
+// Spacing
+
+$sizes: (
+    'xs': 0.8rem,
+    'sm': 1.6rem,
+    'lg': 3.2rem,
+    'xl': 6.4rem
+);
+
+$max-width: 125rem;
+
+$ui-padding: map-get($sizes, 'sm') map-get($sizes, 'lg');
+
+//////////////////////////////////////////////////
+// Responsive Breakpoints
+$breakpoints: (
+    'tab-port': 48em,
+    'tab-land': 64em,
+    'desktop': 78.125em
+);

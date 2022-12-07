@@ -1,0 +1,87 @@
+@use '../abstracts' as *;
+
+.segmented-control {
+    display: flex;
+    justify-content: center;
+    line-height: 1;
+    margin: map-get($sizes, 'lg') 0;
+    position: relative;
+
+    @include ui-font-style;
+
+    @include breakpoint-min('tab-land') {
+        margin: map-get($sizes, 'xl') 0;
+    }
+
+    &__item {
+        background-color: $shade-01;
+        display: flex;
+        flex-basis: 50%;
+        box-shadow: 0 0 0.5rem $shade-01;
+
+        @media (prefers-color-scheme: dark) {
+            background-color: $shade-08;
+            box-shadow: 0 0 0.5rem $shade-08;
+            color: $color-light;
+        }
+
+        @include breakpoint-min('tab-port') {
+            flex-basis: 25%;
+        }
+
+        &:first-of-type {
+            border-radius: 3rem 0 0 3rem;
+        }
+        &:last-of-type {
+            border-radius: 0 3rem 3rem 0;
+        }
+    }
+
+    &__indicator {
+        background-color: $color-primary;
+        color: transparent;
+        padding: $ui-padding;
+        position: absolute;
+        top: 0;
+        transition: all 0.2s ease-in;
+        width: 51%;
+
+        @include breakpoint-min('tab-port') {
+            width: 26%;
+        }
+
+        &--left {
+            border-radius: 3rem 0 0 3rem;
+            clip-path: polygon(0 0, 100% 0, calc(100% - 1.5rem) 100%, 0 100%);
+            left: 0%;
+
+            @include breakpoint-min('tab-port') {
+                left: 25%;
+            }
+        }
+
+        &--right {
+            border-radius: 0 3rem 3rem 0;
+            clip-path: polygon(1.5rem 0, 100% 0, 100% 100%, 0 100%);
+            left: 49%;
+        }
+    }
+
+    input[type='radio'] {
+        display: none;
+
+        + label {
+            cursor: pointer;
+            flex: 1;
+            padding: $ui-padding;
+            text-align: center;
+            z-index: 10;
+        }
+
+        &:checked + label {
+            @media (prefers-color-scheme: dark) {
+                color: $color-dark;
+            }
+        }
+    }
+}

@@ -1,0 +1,104 @@
+@use '../abstracts/' as *;
+
+.row {
+    .hithere {
+        align-items: flex-end;
+        display: flex;
+        min-height: 90vh;
+        padding-top: 9.2rem;
+        position: relative;
+
+        @include breakpoint-min('tab-port') {
+            min-height: 75vh;
+            padding-top: 11.8rem;
+        }
+
+        @include breakpoint-min('tab-land') {
+            min-height: 90vh;
+        }
+
+        @media (max-aspect-ratio: 10/22) {
+            min-height: 70vh;
+        }
+
+        &__img {
+            background: right -47.5rem top 3rem / auto 115vh no-repeat url('../images/alex.png');
+            bottom: 0;
+            left: 0;
+            mix-blend-mode: luminosity;
+            opacity: 0.65;
+            position: absolute;
+            right: 0;
+            top: 0;
+
+            @media (prefers-color-scheme: dark) {
+                opacity: 0.5;
+            }
+
+            @include breakpoint-min('tab-port') {
+                background-position: right -38rem top 3rem;
+                background-size: cover;
+            }
+
+            @media (max-width: map-get($breakpoints, 'desktop')) and (orientation: landscape) {
+                background-position: right -12rem top 3rem;
+                background-size: contain;
+            }
+
+            @include breakpoint-min('desktop') {
+                background-position: right bottom;
+                background-size: auto 95%;
+            }
+
+            @media (max-aspect-ratio: 10/22) {
+                background-size: cover;
+            }
+        }
+
+        &__textbox {
+            color: $color-light;
+            z-index: 10;
+            animation: fade-in-up 0.5s ease-out backwards;
+
+            @include breakpoint-min('tab-port') {
+                max-width: 50%;
+            }
+
+            h1 {
+                font-size: 3.6rem;
+                margin-bottom: map-get($sizes, 'lg');
+                max-width: 70%;
+
+                @include breakpoint-min('tab-port') {
+                    max-width: none;
+                }
+
+                @include breakpoint-min('tab-land') {
+                    font-size: 4.8rem;
+                }
+            }
+
+            p {
+                font-size: 2rem;
+                line-height: 1.35;
+                margin-bottom: map-get($sizes, 'sm');
+                max-width: 70%;
+                text-shadow: 0 0 0.8rem $shade-07;
+
+                @include breakpoint-min('tab-port') {
+                    max-width: none;
+                    text-shadow: none;
+                }
+            }
+
+            button {
+                margin-top: map-get($sizes, 'lg');
+                width: 100%;
+
+                @include breakpoint-min('tab-port') {
+                    width: auto;
+                }
+            }
+        }
+    }
+}

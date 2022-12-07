@@ -1,0 +1,183 @@
+@use '../abstracts/' as *;
+
+.nav {
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: 20;
+
+    &__main {
+        align-items: center;
+        color: $color-light;
+        display: flex;
+        height: 6rem;
+        margin: auto;
+        max-width: $max-width;
+        position: relative;
+
+        @include padding-default-x;
+
+        @include breakpoint-min('tab-port') {
+            height: auto;
+            margin: map-get($sizes, 'lg') auto;
+        }
+    }
+
+    &__border {
+        align-items: center;
+        display: flex;
+        flex: 1;
+        justify-content: space-between;
+
+        @include breakpoint-min('tab-port') {
+            border: 0.1rem solid var(--background-active);
+            border-radius: map-get($sizes, 'xs');
+            padding: map-get($sizes, 'sm') map-get($sizes, 'lg');
+        }
+    }
+
+    &__logo {
+        height: 3rem;
+        margin-right: map-get($sizes, 'sm');
+    }
+
+    &__text {
+        display: flex;
+        flex-direction: column;
+        font-size: 1.6rem;
+        font-weight: 600;
+        margin-right: auto;
+        text-transform: uppercase;
+
+        .color {
+            color: $color-primary;
+        }
+    }
+
+    &__icon {
+        cursor: pointer;
+        display: flex;
+        flex-direction: column;
+        height: 2.4rem;
+        justify-content: space-between;
+        position: relative;
+        width: 3.2rem;
+
+        @include breakpoint-min('tab-port') {
+            display: none;
+        }
+
+        &-elem {
+            background-color: $color-primary;
+            display: block;
+            height: 0.2rem;
+            left: 0;
+            position: absolute;
+            transition: transform 0.25s ease-in-out, opacity 0.25s ease-in-out;
+            width: 100%;
+
+            &:nth-child(1) {
+                top: 0;
+            }
+
+            &:nth-child(2) {
+                top: 1.2rem;
+            }
+
+            &:nth-child(3) {
+                top: 2.3rem;
+            }
+        }
+
+        &--close {
+            z-index: 10;
+            display: block;
+            position: fixed;
+            right: map-get($sizes, 'sm');
+            top: map-get($sizes, 'sm');
+
+            span:nth-child(1) {
+                top: 1.2rem;
+                transform: rotate(135deg);
+            }
+
+            span:nth-child(2) {
+                opacity: 0;
+            }
+
+            span:nth-child(3) {
+                top: 1.2rem;
+                transform: rotate(-135deg);
+            }
+        }
+    }
+
+    &__list {
+        color: $color-light;
+        display: none;
+        font-weight: 600;
+        list-style: none;
+        text-transform: uppercase;
+
+        @include breakpoint-min('tab-port') {
+            display: flex;
+        }
+
+        &--active {
+            color: $color-primary;
+        }
+
+        li {
+            align-items: center;
+            display: flex;
+            margin-left: map-get($sizes, 'lg') - 0.3rem * 2;
+        }
+
+        @include nav-links;
+
+        @at-root .nav__icon--close + & {
+            align-items: center;
+            background: var(--gradient-active);
+            display: flex;
+            flex-flow: column nowrap;
+            font-size: 2.2rem;
+            height: 100vh;
+            justify-content: center;
+            left: 0;
+            overflow: hidden;
+            position: fixed;
+            padding: map-get($sizes, 'sm');
+            right: 0;
+            top: 0;
+
+            li {
+                margin-left: 0;
+                animation: fade-in-up 0.35s ease-out backwards;
+
+                &:not(:last-child) {
+                    margin-bottom: map-get($sizes, 'lg') * 1.5;
+                }
+            }
+        }
+    }
+
+    &.sticky {
+        animation: move-in 0.2s ease-out both;
+        background: var(--gradient-active);
+        box-shadow: 0 0 map-get($sizes, 'lg') rgba($shade-08, 0.5);
+        position: fixed;
+        transform: translateY(-13.6rem);
+
+        @include breakpoint-min('tab-port') {
+            .nav__main {
+                margin: 0 auto;
+                padding: 0;
+            }
+
+            .nav__border {
+                border: none;
+            }
+        }
+    }
+}

@@ -1,0 +1,41 @@
+@use '../abstracts/' as *;
+
+.btn {
+    border: 0;
+    border-radius: 3rem;
+    cursor: pointer;
+    line-height: 1;
+    padding: $ui-padding;
+    transition: translateY 0.1s ease-out;
+
+    @include ui-font-style;
+
+    &:active {
+        transform: translateY(0.1rem);
+    }
+
+    &--primary {
+        background: linear-gradient(
+                105deg,
+                $color-primary-dark 0%,
+                $color-primary-dark 50%,
+                $color-primary 50%,
+                $color-primary 100%
+            )
+            left / 202%;
+        background-position: right;
+        color: $color-dark;
+        transition: background-position 0.2s ease-in-out;
+
+        box-shadow: 0 0 0.5rem $color-primary;
+
+        &:hover {
+            background-position: left;
+            box-shadow: 0 0 0.5rem $color-primary;
+        }
+    }
+
+    &--fullwidth {
+        width: 100%;
+    }
+}

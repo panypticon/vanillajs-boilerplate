@@ -1,0 +1,84 @@
+@use '../abstracts' as *;
+
+@keyframes fade-in-up {
+    0% {
+        opacity: 0.8;
+        transform: translateY(map-get($sizes, 'sm'));
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fade-in-up-top {
+    0% {
+        opacity: 0.8;
+        top: map-get($sizes, 'sm');
+    }
+
+    100% {
+        opacity: 1;
+        top: 0rem;
+    }
+}
+
+@keyframes fade-in {
+    0% {
+        opacity: 0.8;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes move-in {
+    100% {
+        transform: translateY(0);
+    }
+}
+
+@keyframes to-left {
+    from {
+        transform: translateX(-100%);
+    }
+    to {
+        transform: translateX(0%);
+    }
+}
+
+@keyframes to-right {
+    from {
+        transform: translateX(-100%);
+    }
+    to {
+        transform: translateX(-200%);
+    }
+}
+
+@keyframes jump {
+    from {
+        transform: translateY(0.1rem);
+    }
+    to {
+        transform: translateY(-0.1rem);
+    }
+}
+
+.fade-in-up-card {
+    animation: fade-in-up 0.2s ease-out both;
+
+    @media (hover: hover) {
+        animation: fade-in-up-top 0.2s ease-out forwards;
+    }
+}
+
+.fade-in-up {
+    animation: fade-in-up 0.2s ease-out both;
+}
+
+.jump {
+    animation: jump 0.4s ease-out alternate infinite;
+}
